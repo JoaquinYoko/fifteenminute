@@ -73,3 +73,7 @@ body{
 .id-carga.cargando {
     display: block;
 }
+
+.icono-ubicacion svg{
+    vertical-align:auto;
+}
