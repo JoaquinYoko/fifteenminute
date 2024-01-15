@@ -1,4 +1,4 @@
-// <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 
 // ***************inicializar mapa***************
 var bbox;
@@ -18,7 +18,11 @@ function onLocationError(e) {
 }
 
 var unionesActivas = L.featureGroup().addTo(map);
-var marcadores = L.markerClusterGroup();//L.featureGroup();
+var marcadores = L.markerClusterGroup();
+var searchbox = L.control.searchbox({
+  position: 'topleft',
+  expand: 'right'
+}).addTo(map);
 
 map.on('locationerror', onLocationError);
 // *********************************************
@@ -120,12 +124,10 @@ function agregarCirculo(pos) {
     const circuloAgregar = turf.circle(pos, radio, options);
     L.marker([pos[1], pos[0]], {icon: markerIcon}).addTo(marcadores);
     if(circulosLayer.length > 0){
-      console.log('entro');
       let preexistentes = circulosLayer.pop()
       let nuevaUnion = turf.union(preexistentes, circuloAgregar);
       circulosLayer.push(nuevaUnion);
     }else{
-      console.log('entro aca');
       circulosLayer.push(circuloAgregar);
     }
     
@@ -172,4 +174,26 @@ function setbbox(bounds){
 
 function cancelarQuery(){
   cancelado = true;
+}
+
+function searchLocation() {
+  var searchTerm = $('#searchInput').val();
+
+  $.getJSON('https://nominatim.openstreetmap.org/search?format=json&q=' + searchTerm, function (data) {
+    if (data && data.length > 0) {
+      var result = data[0];
+      var lat = result.lat;
+      var lon = result.lon;
+
+      // Centrar el mapa en la ubicación encontrada
+      map.setView([lat, lon], 15); 
+
+      // Mostrar un marcador en la ubicación
+      L.marker([lat, lon]).addTo(map)
+        .bindPopup(result.display_name)
+        .openPopup();
+    } else {
+      alert('Ubicación no encontrada');
+    }
+  });
 }
