@@ -11,14 +11,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="Leaflet.AnimatedSearchBox.css" rel="stylesheet">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="Leaflet.AnimatedSearchBox.js"></script>
     <meta charset="UTF-8">
 </head>
 <body>
@@ -27,10 +25,11 @@
         <span id="currentValue">500</span>
         <input type="range" class="form-range" oninput="modificarRadio(this.value)" min="0" max="1000" step="1">
     </div>
-    <div class="row justify-content-md-center" style="z-index: 1000; position:relative;">
+    <div id="buscador" >
         <input id="searchInput" style="width: 350px;" type="text" placeholder="Buscar lugar...">
-        <button type="button" style="width: auto;" class="ml-5 btn btn-primary" id="search-button" onclick="searchLocation()">Search</button>
-      </div>
+        <button id="searchButton" type="button" class="ml-5 btn btn-primary" id="search-button" onclick="searchLocation()">Search</button>
+        <div id="opcionesResultados"></div>
+    </div>
     <div class="configPanel">
         <ul> 
             <li><input type="checkbox" value="cafe" class="checkBoxes"/> Cafeterías </li>

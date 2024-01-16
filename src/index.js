@@ -1,9 +1,7 @@
-
-
 // ***************inicializar mapa***************
 var bbox;
 var bboxString;
-var map = L.map('map').fitWorld();
+var map = L.map('map', {zoomControl: false}).fitWorld();
 map.locate({setView: true, maxZoom: 15});
 
 /*function onLocationFound(e) {
@@ -19,10 +17,6 @@ function onLocationError(e) {
 
 var unionesActivas = L.featureGroup().addTo(map);
 var marcadores = L.markerClusterGroup();
-var searchbox = L.control.searchbox({
-  position: 'topleft',
-  expand: 'right'
-}).addTo(map);
 
 map.on('locationerror', onLocationError);
 // *********************************************
@@ -55,6 +49,8 @@ function inicializarLayer(requestedQuery){
     minZoom: map.getZoom(),
     query: `(${requestedQuery});out;`,
     onSuccess: function(data) {
+      unionesActivas.clearLayers();
+      marcadores.clearLayers();
       let cantElementos = data.elements.length;
       let contador = 0;
       let confirmado = true;
@@ -176,24 +172,42 @@ function cancelarQuery(){
   cancelado = true;
 }
 
+var resultados;
 function searchLocation() {
   var searchTerm = $('#searchInput').val();
 
   $.getJSON('https://nominatim.openstreetmap.org/search?format=json&q=' + searchTerm, function (data) {
     if (data && data.length > 0) {
-      var result = data[0];
-      var lat = result.lat;
-      var lon = result.lon;
-
-      // Centrar el mapa en la ubicación encontrada
-      map.setView([lat, lon], 15); 
-
-      // Mostrar un marcador en la ubicación
-      L.marker([lat, lon]).addTo(map)
-        .bindPopup(result.display_name)
-        .openPopup();
+      resultados = data;
+      var contenedor = $("#opcionesResultados");
+      contenedor.empty();
+      for(i=0; i<4; i++){
+       
+        var nuevoBoton = $("<button>").text(resultados[i].display_name).attr("id", "boton" + i).attr('value', i).attr('style', "width: 350px;");
+        nuevoBoton.click(function() {
+          var n = $(this).attr("value");
+          var result = resultados[n];
+          console.log(n);
+          var lat = result.lat;
+          var lon = result.lon;
+          map.setView([lat, lon], 15)
+        });
+    
+        contenedor.append(nuevoBoton);
+      }
     } else {
       alert('Ubicación no encontrada');
     }
   });
+}
+
+function fijarVista(boton){
+  var n = boton.value;
+  console.log(n);
+  var lat = result[n].lat;
+  var lon = result[n].lon;
+  map.setView([lat, lon], 15)
+  L.marker([lat, lon]).addTo(map)
+  .bindPopup(result.display_name)
+  .openPopup();
 }
