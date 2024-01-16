@@ -47,7 +47,7 @@ function inicializarLayer(requestedQuery){
   circulosLayer.length = 0;
   var opl = new L.OverPassLayer({
     minZoom: map.getZoom(),
-    query: `(${requestedQuery});out;`,
+    query: `(${requestedQuery});out center;`,
     onSuccess: function(data) {
       unionesActivas.clearLayers();
       marcadores.clearLayers();
@@ -65,7 +65,13 @@ function inicializarLayer(requestedQuery){
         if(!cancelado){
             if(contador < cantElementos){
               let e = data.elements[contador];
-              let pos = [e.lon, e.lat];
+              let pos;
+              if(e.type === "way"){
+                pos = [e.center.lon, e.center.lat]
+              }
+              else{
+                pos = [e.lon, e.lat];
+              }
               agregarCirculo(pos)
               document.getElementById("carga").innerHTML = ++contador;
             }else{
