@@ -1,4 +1,4 @@
-# fifteenminute
+# fifteenminute v1.0
 Fifteenminute es una herramienta que facilita la recolección de datos del radio en metros en los que están disponibles ciertos lugares (como cafeterías, restaurantes, escuelas hospitales, o lo que especifique el usuario) en un mapa. La idea surge con el objetivo de analizar qué es lo que falta en un lugar, por ejemplo, en mi localidad hay pocas cafeterías, entonces veo qué radio ocupan las que ya hay para saber dónde sería un lugar ideal para poner una.
 
 ### Modo de uso
