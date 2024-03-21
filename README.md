@@ -7,6 +7,7 @@ Para usar a la herramienta, acceder a esta página web.
 Una vez allí, enfoca en el mapa el lugar que querés analizar. Podes usar el buscador que se encuentra arriba a la izquierda para ir más rápido.
 
 Para marcar qué datos queremos recolectar, vamos al engranaje en la esquina inferior derecha de la pantalla:
+
 ![Engranaje](/assets/1.png)
 
 Ahí marcamos lo que deseamos ver, en este caso las “Cafeterías” y luego damos click en “actualizar” para que carguen los datos.
@@ -18,7 +19,7 @@ Ahora podemos ver el área del mapa donde tendremos una cafetería a menos de 50
 Adicionalmente podemos cambiar el radio utilizado con esta utilidad, ubicada en la esquina superior derecha de la pantalla:
 ![radio](/assets/4.png)
 
-####Atribución
+#### Atribución
 Datos de [OpenStreetMap](www.openstreetmap.org)
 Minería de datos de [Overpass API](https://overpass-api.de/)
 Búsqueda de [Nominatim](https://nominatim.org/)
