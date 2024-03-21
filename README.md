@@ -23,7 +23,7 @@ Adicionalmente podemos cambiar el radio utilizado con esta utilidad, ubicada en 
 ![radio](/assets/4.png)
 
 #### Atribución
-- Datos de [OpenStreetMap](www.openstreetmap.org)
+- Datos de [OpenStreetMap](https://www.openstreetmap.org/)
 - Minería de datos de [Overpass API](https://overpass-api.de/)
 - Búsqueda de [Nominatim](https://nominatim.org/)
 - Mapa de [Leaflet](https://leafletjs.com/)
