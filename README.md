@@ -11,18 +11,21 @@ Para marcar qué datos queremos recolectar, vamos al engranaje en la esquina inf
 ![Engranaje](/assets/1.png)
 
 Ahí marcamos lo que deseamos ver, en este caso las “Cafeterías” y luego damos click en “actualizar” para que carguen los datos.
+
 ![menu](/assets/2.png)
 
 Ahora podemos ver el área del mapa donde tendremos una cafetería a menos de 500 metros:
+
 ![area](/assets/3.png)
 
 Adicionalmente podemos cambiar el radio utilizado con esta utilidad, ubicada en la esquina superior derecha de la pantalla:
+
 ![radio](/assets/4.png)
 
 #### Atribución
-Datos de [OpenStreetMap](www.openstreetmap.org)
-Minería de datos de [Overpass API](https://overpass-api.de/)
-Búsqueda de [Nominatim](https://nominatim.org/)
-Mapa de [Leaflet](https://leafletjs.com/)
-Análisis geoespacial de [Turfjs](https://turfjs.org/)
+- Datos de [OpenStreetMap](www.openstreetmap.org)
+- Minería de datos de [Overpass API](https://overpass-api.de/)
+- Búsqueda de [Nominatim](https://nominatim.org/)
+- Mapa de [Leaflet](https://leafletjs.com/)
+- Análisis geoespacial de [Turfjs](https://turfjs.org/)
 
